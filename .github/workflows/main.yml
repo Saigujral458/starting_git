@@ -1,18 +1,17 @@
-name: CI
-on:
-  push:
-    branches: [ main ]
+name: Run Code
+on: [push]
 jobs:
-  deploy:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Deploy to server
-        uses: easingthemes/ssh-deploy@v2.1.2
-        with:
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote_host: ${{ secrets.REMOTE_HOST }}
-          remote_user: ${{ secrets.REMOTE_USER }}
-          source: ./dist
-          target: /var/www/my-app
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Run code
+      run: python my_code.py
+
