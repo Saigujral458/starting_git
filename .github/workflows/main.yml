@@ -18,5 +18,5 @@ jobs:
       run: pip install pytest
 
     - name: Run tests
-      run: pytest tests/test_add2no.py
+      run: pytest test/test_add2no.py
 
