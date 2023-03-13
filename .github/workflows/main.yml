@@ -1,17 +1,22 @@
-name: Run Code
+name: Python Testing
+
 on: [push]
+
 jobs:
-  run:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9'
+        python-version: '3.x'
 
-    - name: Run code
-      run: python 3rd.py
+    - name: Install dependencies
+      run: pip install pytest
+
+    - name: Run tests
+      run: pytest tests/test_add2no.py
 
