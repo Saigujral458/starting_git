@@ -13,5 +13,5 @@ jobs:
         python-version: '3.9'
 
     - name: Run code
-      run: python 4rth.py
+      run: python 3rd.py
 
